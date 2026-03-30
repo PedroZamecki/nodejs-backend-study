@@ -35,6 +35,21 @@ app.get(
     }
 )
 
+app.get(
+    "/search", ( // No special treatment here, in this case this is simply a GET route
+        req,
+        res,
+    ) => {
+        const search = req.query.search // Here we search for the query 'search'
+        if (!search) { // This enforces that the route is `/search?search=...`
+            console.log('Get executed without query \'search\'') 
+            return res.status(404).send('No value for query \'search\'')
+        }
+        console.log(`Get executed with query 'search'=${search}`)
+        res.send(`You tested with query search=${search}`)
+    }
+)
+
 app.all( // app.all -> defines the fallback route. Works for EVERY method ("GET"/"POST"/"DELETE"/...)
     "/*path" , (
         req,
