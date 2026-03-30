@@ -24,6 +24,17 @@ app.get( // app.use -> defines the route for GET requests only.
     }
 )
 
+app.get(
+    "/route_param/:param/test", ( // This defines the param, everything written between here is accessible by the `req.params.param`
+        req,
+        res,
+    ) => {
+        const param = req.params.param
+        console.log(`Get route with param executed, param: '${param}'`)
+        res.send(`You tested with the param = '${param}'`)
+    }
+)
+
 app.all( // app.all -> defines the fallback route. Works for EVERY method ("GET"/"POST"/"DELETE"/...)
     "/*path" , (
         req,
