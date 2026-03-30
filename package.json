@@ -1,0 +1,30 @@
+{
+  "name": "nodejs-backend-study",
+  "version": "1.0.0",
+  "description": "A package to study Node.js and its backend capabilities",
+  "keywords": [
+    "backend",
+    "node",
+    "nodejs",
+    "study",
+    "learn"
+  ],
+  "homepage": "https://github.com/PedroZamecki/nodejs-backend-study#readme",
+  "bugs": {
+    "url": "https://github.com/PedroZamecki/nodejs-backend-study/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroZamecki/nodejs-backend-study.git"
+  },
+  "license": "MIT",
+  "author": "Pedro Zamecki Andrade",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
