@@ -59,6 +59,22 @@ app.get(
     }
 )
 
+app.get(
+    "/async-err", (
+        req,
+        res,
+        next,
+    ) => {
+        setTimeout(() => {
+            try {
+                throw new Error("This is an async test error")
+            } catch(err) {
+                next(err) // We need to pass the error to Express directly, if we don't, express will break.
+            }
+        }, 500)
+    }
+)
+
 app.use( 
         // This is also a middleware, with the exception that it deals with the error cases
         // Note: the previous middleware ALSO runs.
