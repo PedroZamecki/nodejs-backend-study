@@ -50,6 +50,29 @@ app.get(
     }
 )
 
+app.get(
+    "/error", (
+        req,
+        res,
+    ) => {
+        throw new Error("This is a test error")
+    }
+)
+
+app.use( 
+        // This is also a middleware, with the exception that it deals with the error cases
+        // Note: the previous middleware ALSO runs.
+    (
+        err, 
+        req, 
+        res, 
+        next,
+    ) => {
+        console.error(`Error middleware executed: err=\'${err}\'`)
+        res.status(500).send(`We got an error! Error: '${err}'`)
+    }
+)
+
 app.all( // app.all -> defines the fallback route. Works for EVERY method ("GET"/"POST"/"DELETE"/...)
     "/*path" , (
         req,
