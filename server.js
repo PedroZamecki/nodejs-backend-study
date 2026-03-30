@@ -20,7 +20,18 @@ app.get( // app.use -> defines the route for GET requests only.
         res,
     ) =>  {
         console.log("Get route function executed")
-        res.send('Test') // Returned when curl 'http://{IP}/{PORT}' 
+        res.send('Test') // Returned when curl 'http://{IP}:{PORT}' 
+    }
+)
+
+app.all( // app.all -> defines the fallback route. Works for EVERY method ("GET"/"POST"/"DELETE"/...)
+    "/*path" , (
+        req,
+        res,
+    ) => {
+        const path = req.params.path
+        console.log("Fallback route function executed")
+        res.status(404).send(`Route does not exist: '/${path}'`) // Returned when curl 'http://{IP}:{PORT}/anything_that_doesnt_exist'
     }
 )
 
@@ -33,4 +44,4 @@ app.listen(
 
 // Cases:
 // 1. curl 'http://localhost:3000/' -> Executes middlewere + '/' route get function (returning 'Test' in this case)
-// 2. curl 'http://localhost:3000/test' -> Executes middlewere only (returning some HTTP error? study more.)
+// 2. curl 'http://localhost:3000/test' -> Executes middlewere only (returning [404] - 'Route does not exist: `/${path}`') <- this happens because of the app.all("/*path", () => {})
