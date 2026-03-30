@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express()
+const port = 3000
 
 app.use( // app.use -> middlewere that executes BEFORE the request given. works BEFORE all methods ("GET"/"POST"/"DELETE"/...)
     "/", (
@@ -24,9 +25,9 @@ app.get( // app.use -> defines the route for GET requests only.
 )
 
 app.listen(
-    3000, // Port to listen to
+    port,
     () => {
-        console.log("Server is running") // Code to run AFTER successfully opening the server
+        console.log(`Server is running on port ${port}`) // Code to run AFTER successfully opening the server
     }
 )
 
