@@ -75,6 +75,10 @@ app.get(
     }
 )
 
+app.use('/assets', // Serve files inside /assets, i.e.: GET http://{IP}:{PORT}/assets/PfP.png
+    express.static('assets') // This will make everything on the 'assets' folder accessible by the '/assets' folder
+)
+
 app.use( 
         // This is also a middleware, with the exception that it deals with the error cases
         // Note: the previous middleware ALSO runs.
