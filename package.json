@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-backend-study",
+  "name": "preex",
   "version": "1.0.0",
-  "description": "A package to study Node.js and its backend capabilities",
+  "description": "A node.js server responsible for giving more power as an OSS to power (cheaper) PIX payments.",
   "keywords": [
     "backend",
     "node",
