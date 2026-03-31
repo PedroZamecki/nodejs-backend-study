@@ -1,4 +1,5 @@
 const express = require('express');
+const userRouter = require('./routes/user');
 const app = express()
 const port = 3000
 
@@ -13,6 +14,8 @@ app.use( // app.use -> middleware that executes BEFORE the request given. works 
         next() // function to CONTINUE the line of execution, for example, if there is a route that SHOULD be executed afterwards, we will here.
     }
 )
+
+app.use('/users', userRouter)
 
 app.get( // app.use -> defines the route for GET requests only.
     "/", (
